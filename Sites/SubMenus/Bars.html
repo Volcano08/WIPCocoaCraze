@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Bars</title>
+    <style>
+        body {
+            background-color: #F7EED6; /* Cream background */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            font-family: Arial, sans-serif; /* Use Arial font */
+        }
+        header {
+            background-image: url(../../Images/HomePageImages/Choclate\ Factory.jpg); /* Chocolate brown background for header */
+            height: 70px; /* Set the height of the header */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: #F7EED6; /* Cream text color */
+            background-position: center;
+            position: relative; /* Position relative for absolute positioning inside header */
+        }
+        #LogoHead {
+            width: 200px; /* Increase the width of the logo */
+            margin-top: 30px;
+        }
+        #LogoLink {
+            position: absolute; /* Position the logo link absolutely */
+            left: 50%; /* Move the logo link to the horizontal center */
+            transform: translateX(-50%); /* Adjust horizontally to center */
+        }
+        .header-link {
+            text-decoration: none;
+            color: #F7EED6; /* Cream text color */
+            margin: 0 10px;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #7B3F00; /* Chocolate brown background for submenu */
+            padding: 10px;
+            z-index: 1;
+        }
+        .submenu a {
+            color: #F7EED6; /* Cream text color */
+            display: block;
+            margin-top: 5px;
+            text-decoration: none;
+        }
+        .submenu a:hover {
+            text-decoration: underline;
+        }
+        .has-submenu:hover .submenu {
+            display: block;
+        }
+
+        /* Menu Item Styling */
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #7B3F00;
+        }
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .menu-item-details {
+            flex-grow: 1;
+        }
+        .menu-item-details h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .menu-item-details p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="has-submenu">
+            <a href="#" class="header-link">Menu</a>
+            <div class="submenu">
+                <a href="Bars.html">Bars</a>
+                <a href="HotItems.html">Hot Items</a>
+                <a href="ColdItems.html">Cold Items</a>
+            </div>
+        </div>
+        <a href="../Order.html" class="header-link">Order</a>
+        <a id="Recipes" href="../Recipes.html" class="header-link">Recipes</a>
+        <a href="../../index.html" id="LogoLink">
+            <img id="LogoHead" src="../../Images/HomePageImages/Logo.png" alt="">
+        </a>
+        <a href="../ChoclatePairs.html" class="header-link" id="ChoclatePairsLink">Chocolate Pairs</a>
+    </header>
+
+    <!-- Chocolate Bars Menu Section -->
+    <section id="chocolate-bars" class="menu-section">
+        <!-- Almond Joy CocoaCraze Delight Bar -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Almond Joy CocoaCraze Delight Bar.png" alt="Almond Joy CocoaCraze Delight Bar">
+            <div class="menu-item-details">
+                <h3>Almond Joy CocoaCraze Delight Bar</h3>
+                <p>Experience the joy of almonds and coconut in this delightful chocolate bar. Smooth milk chocolate infused with shredded coconut and crunchy almond bits, creating a blissful combination of flavors and textures.</p>
+                <p>Calories: 190</p>
+                <p>$2.90</p>
+            </div>
+        </div>
+
+        <!-- Caramel Sea Salt CocoaCraze Sensation -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Carmel Sea Salt Sensation.png" alt="Caramel Sea Salt CocoaCraze Sensation">
+            <div class="menu-item-details">
+                <h3>Caramel Sea Salt CocoaCraze Sensation</h3>
+                <p>Luxurious milk chocolate combined with gooey caramel and a touch of sea salt for a satisfying blend of sweet and savory.</p>
+                <p>Calories: 200</p>
+                <p>$2.80</p>
+            </div>
+        </div>
+
+        <!-- Cherry Almond CocoaCraze Delight Bar -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Cherry Almond CocoaCraze Delight Bar.png" alt="Cherry Almond CocoaCraze Delight Bar">
+            <div class="menu-item-details">
+                <h3>Cherry Almond CocoaCraze Delight Bar</h3>
+                <p>Indulge in the delightful combination of cherries and almonds enveloped in rich milk chocolate. Each bite offers a burst of fruity sweetness with a nutty undertone.</p>
+                <p>Calories: 180</p>
+                <p>$2.70</p>
+            </div>
+        </div>
+
+        <!-- CocoaCraze Coconut Paradise Bar -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/CocoaCraze Coconut Paradise Bar.png" alt="CocoaCraze Coconut Paradise Bar">
+            <div class="menu-item-details">
+                <h3>CocoaCraze Coconut Paradise Bar</h3>
+                <p>Transport yourself to a tropical paradise with this coconut-infused chocolate bar. Silky milk chocolate combined with toasted coconut flakes, evoking the flavors of a sun-kissed island getaway.</p>
+                <p>Calories: 200</p>
+                <p>$3.10</p>
+            </div>
+        </div>
+
+        <!-- White CocoaCraze Dream -->
+<div class="menu-item">
+    <img src="../../Images/SubMenu Images/Bar Images/White CocoaCraze Dream.png" alt="White CocoaCraze Dream">
+    <div class="menu-item-details">
+        <h3>White CocoaCraze Dream</h3>
+        <p>Smooth white chocolate with crunchy almond pieces, offering a creamy and nutty delight.</p>
+        <p>Calories: 170</p>
+        <p>$2.60</p>
+    </div>
+</div>
+
+
+
+        <!-- CocoaCraze Espresso Crunch Bar -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/CocoaCraze Espresso Crunch Bar.png" alt="CocoaCraze Espresso Crunch Bar">
+            <div class="menu-item-details">
+                <h3>CocoaCraze Espresso Crunch Bar</h3>
+                <p>Energize your day with the bold flavors of espresso and chocolate. Rich dark chocolate combined with espresso-infused crunchy bits, delivering a satisfying crunch and a burst of coffee flavor.</p>
+                <p>Calories: 190</p>
+                <p>$3.00</p>
+            </div>
+        </div>
+
+        <!-- CocoaCraze Hazelnut CocoaCraze Delight Bar -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Hazelnut CocoaCraze Delight Bar.png" alt="CocoaCraze Hazelnut CocoaCraze Delight Bar">
+            <div class="menu-item-details">
+                <h3>Hazelnut CocoaCraze Delight Bar</h3>
+                <p>Creamy milk chocolate with a generous layer of hazelnut praline, offering a delightful balance of sweetness and nuttiness.</p>
+                <p>Calories: 180</p>
+                <p>$2.75</p>
+            </div>
+        </div>
+
+        <!-- CocoaCraze Orange Zest CocoaCraze Sensation -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Orange Zest CocoaCraze Sensation.png" alt="CocoaCraze Orange Zest CocoaCraze Sensation">
+            <div class="menu-item-details">
+                <h3>Orange Zest CocoaCraze Sensation</h3>
+                <p>Brighten your day with the zesty freshness of orange paired with smooth chocolate. Creamy milk chocolate infused with tangy orange zest, offering a delightful citrusy twist to your chocolate indulgence.</p>
+                <p>Calories: 180</p>
+                <p>$2.80</p>
+            </div>
+        </div>
+
+        <!-- CocoaCraze Peanut Butter Crunch Bar -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/CocoaCraze Peanut Butter Crunch Bar.png" alt="CocoaCraze Peanut Butter Crunch Bar">
+            <div class="menu-item-details">
+                <h3>CocoaCraze Peanut Butter Crunch Bar</h3>
+                <p>A delightful blend of rich cocoa, crunchy peanuts, and creamy peanut butter, coated in smooth chocolate. Perfect for a quick indulgence.</p>
+                <p>Calories: 180</p>
+                <p>$2.50</p>
+            </div>
+        </div>
+
+        <!-- CocoaCraze Pistachio CocoaCraze Dream -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Pistachio CocoaCraze Dream.png" alt="CocoaCraze Pistachio CocoaCraze Dream">
+            <div class="menu-item-details">
+                <h3>Pistachio CocoaCraze Dream</h3>
+                <p>Indulge in the creamy goodness of white chocolate with a nutty twist. Velvety white chocolate studded with roasted pistachio pieces, creating a heavenly combination of sweetness and crunch.</p>
+                <p>Calories: 180</p>
+                <p>$2.85</p>
+            </div>
+        </div>
+
+        <!-- CocoaCraze Salted Caramel Crunch -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/CocoaCraze Salted Caramel Crunch.png" alt="CocoaCraze Salted Caramel Crunch">
+            <div class="menu-item-details">
+                <h3>CocoaCraze Salted Caramel Crunch</h3>
+                <p>Treat your taste buds to the perfect balance of sweet and salty with this caramel-infused chocolate bar. Creamy milk chocolate loaded with caramel swirls and sprinkled with sea salt flakes, providing a luxurious and satisfying indulgence.</p>
+                <p>Calories: 210</p>
+                <p>$3.20</p>
+            </div>
+        </div>
+
+        <!-- CocoaCraze Toffee Crunch CocoaCraze Sensation -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Toffee Crunch CocoaCraze Sensation.png" alt="CocoaCraze Toffee Crunch CocoaCraze Sensation">
+            <div class="menu-item-details">
+                <h3>Toffee Crunch CocoaCraze Sensation</h3>
+                <p>Indulge in the buttery goodness of toffee combined with rich chocolate. Decadent milk chocolate filled with crunchy toffee bits, creating a symphony of flavors and textures with every bite.</p>
+                <p>Calories: 200</p>
+                <p>$3.15</p>
+            </div>
+        </div>
+
+        <!-- Dark CocoaCraze Raspberry Bliss -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Dark CocoaCraze Raspberry Bliss.png" alt="Dark CocoaCraze Raspberry Bliss">
+            <div class="menu-item-details">
+                <h3>Dark CocoaCraze Raspberry Bliss</h3>
+                <p>Intense dark chocolate infused with tangy raspberry bits, providing a harmonious contrast of flavors.</p>
+                <p>Calories: 160</p>
+                <p>$3.00</p>
+            </div>
+        </div>
+
+        <!-- Double Chocolate CocoaCraze Extravaganza Bar -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Double Chocolate CocoaCraze Extravaganza Bar.png" alt="Double Chocolate CocoaCraze Extravaganza Bar">
+            <div class="menu-item-details">
+                <h3>Double Chocolate CocoaCraze Extravaganza Bar</h3>
+                <p>Indulge in the richness of double chocolate with this exquisite bar. Creamy milk chocolate filled with dark chocolate ganache, offering a decadent treat for chocolate lovers.</p>
+                <p>Calories: 220</p>
+                <p>$3.25</p>
+            </div>
+        </div>
+
+        <!-- Mint Chocolate CocoaCraze Bliss Bar -->
+        <div class="menu-item">
+            <img src="../../Images/SubMenu Images/Bar Images/Mint Chocolate CocoaCraze Bliss Bar.png" alt="Mint Chocolate CocoaCraze Bliss Bar">
+            <div class="menu-item-details">
+                <h3>Mint Chocolate CocoaCraze Bliss Bar</h3>
+                <p>Refresh your palate with the cool sensation of mint paired with luscious chocolate. Velvety dark chocolate with a hint of mint essence, providing a refreshing and indulgent experience.</p>
+                <p>Calories: 150</p>
+                <p>$2.70</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
