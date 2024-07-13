@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Order</title>
+    <style>
+        body {
+            background-color: #F7EED6;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px;
+            background-color: #7B3F00;
+        }
+        .return-button {
+            padding: 10px 20px;
+            background-color: #F7EED6;
+            color: #7B3F00;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .return-button:hover {
+            background-color: #e6d4b8;
+        }
+        main {
+            padding: 20px;
+        }
+        .order-item, .suggestion-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #7B3F00;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .order-item img, .suggestion-item img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .order-item p, .suggestion-item p {
+            margin: 0;
+        }
+        .order-total {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .address-selection {
+            margin-top: 20px;
+        }
+        .address-selection select {
+            padding: 5px;
+            border: 1px solid #7B3F00;
+            border-radius: 5px;
+        }
+        .calculate-time {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #7B3F00;
+            color: #F7EED6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .calculate-time:hover {
+            background-color: #5e2e00;
+        }
+        .delivery-time {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .suggestions {
+            margin-top: 20px;
+        }
+        .suggestions h2 {
+            margin-bottom: 10px;
+        }
+        .order-buttons {
+            display: flex;
+            flex-direction: column;
+        }
+        .order-buttons button {
+            margin-top: 5px;
+            padding: 5px;
+            background-color: #7B3F00;
+            color: #F7EED6;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .order-buttons button:hover {
+            background-color: #5e2e00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <select id="submenu-selector" class="return-button">
+            <option value="" disabled selected>Return to Menu</option>
+            <option value="SubMenus/Bars.html">Bars</option>
+            <option value="SubMenus/HotItems.html">Hot Items</option>
+            <option value="SubMenus/ColdItems.html">Cold Items</option>
+        </select>
+    </header>
+    <main>
+        <h1>Your Order</h1>
+        <div id="order-list"></div>
+        <p class="order-total">Base Price: $<span id="base-price">0.00</span></p>
+        <p class="order-total">Tax: $<span id="tax-amount">0.00</span></p>
+        <p class="order-total">Total Price: $<span id="order-total">0.00</span></p>
+        <div class="address-selection">
+            <label for="order-from">Order from:</label>
+            <select id="order-from">
+                <option value="" disabled selected>Select the ordering location</option>
+                <option value="1">Chocolate Bars Central, 101 Chocolate Ave, Hershey, PA, USA</option>
+                <option value="2">Chocolate Bars North, 202 Cocoa Rd, Hershey, PA, USA</option>
+                <option value="3">Chocolate Bars South, 303 Candy Ln, Hershey, PA, USA</option>
+            </select>
+        </div>
+        <div class="address-selection">
+            <label for="order-to">Deliver to:</label>
+            <select id="order-to">
+                <option value="" disabled selected>Select your delivery address</option>
+                <option value="1">742 Evergreen Terrace, Springfield, IL, USA</option>
+                <option value="2">123 Elm St, Shelbyville, IN, USA</option>
+                <option value="3">456 Oak St, Ogdenville, IL, USA</option>
+                <option value="4">321 Pine St, Capital City, IL, USA</option>
+                <option value="5">654 Cedar Ave, North Haverbrook, IN, USA</option>
+                <option value="6">987 Birch Blvd, Brockway, IN, USA</option>
+                <option value="7">213 Spruce Ln, Waverly Hills, IL, USA</option>
+                <option value="8">546 Elm St, East Springfield, IL, USA</option>
+                <option value="9">879 Ash St, West Springfield, IL, USA</option>
+                <option value="10">369 Hickory Ln, North Springfield, IL, USA</option>
+            </select>
+            <button class="calculate-time">Calculate Delivery Time</button>
+            <p class="delivery-time" id="delivery-time"></p>
+        </div>
+        <div class="suggestions">
+            <h2>Suggestions for You</h2>
+            <div id="suggestions-list"></div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const order = JSON.parse(localStorage.getItem('order')) || [];
+            const orderList = document.getElementById('order-list');
+            const basePriceElement = document.getElementById('base-price');
+            const taxAmountElement = document.getElementById('tax-amount');
+            const orderTotalElement = document.getElementById('order-total');
+            const suggestionsList = document.getElementById('suggestions-list');
+            let total = 0;
+
+            const productImages = {
+                "Almond Joy CocoaCraze Delight Bar": "../Images/SubMenu Images/Bar Images/Almond Joy CocoaCraze Delight Bar.png",
+                "Caramel Sea Salt CocoaCraze Sensation": "../Images/SubMenu Images/Bar Images/Carmel Sea Salt Sensation.png",
+                "Cherry Almond CocoaCraze Delight Bar": "../Images/SubMenu Images/Bar Images/Cherry Almond CocoaCraze Delight Bar.png",
+                "CocoaCraze Coconut Paradise Bar": "../Images/SubMenu Images/Bar Images/CocoaCraze Coconut Paradise Bar.png",
+                "White CocoaCraze Dream": "../Images/SubMenu Images/Bar Images/White CocoaCraze Dream.png",
+                "CocoaCraze Espresso Crunch Bar": "../Images/SubMenu Images/Bar Images/CocoaCraze Espresso Crunch Bar.png",
+                "Hazelnut CocoaCraze Delight Bar": "../Images/SubMenu Images/Bar Images/Hazelnut CocoaCraze Delight Bar.png",
+                "Orange Zest CocoaCraze Sensation": "../Images/SubMenu Images/Bar Images/Orange Zest CocoaCraze Sensation.png",
+                "Classic ChocoCraze Hot Chocolate": "../Images/SubMenu Images/Hot Item Images/Classic ChocoCraze Hot Chocolate.png",
+                "Spiced Mexican ChocoCraze Cocoa": "../Images/SubMenu Images/Hot Item Images/Spiced Mexican ChocoCraze Cocoa.png",
+                "ChocoCraze Fondue Delight": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Fondue Delight.png",
+                "ChocoCraze Molten Chocolate Delight Cake": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Molten Chocolate Delight Cake.png",
+                "ChocoCraze-Nut Espresso Delight": "../Images/SubMenu Images/Hot Item Images/ChocoCraze-Nut Espresso Delight.png",
+                "ChocoCraze Dark Chocolate Chili Espresso": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Dark Chocolate Chili Espresso.png",
+                "ChocoCraze Caramel Macchiato": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Caramel Macchiato.png",
+                "ChocoCraze Raspberry White Hot Chocolate": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Raspberry White Hot Chocolate.png",
+                "ChocoCraze Matcha Green Tea Latte": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Matcha Green Tea Latte.png",
+                "ChocoCraze Tiramisu Latte": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Tiramisu Latte.png",
+                "ChocoCraze Lavender White Hot Chocolate": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Lavender White Hot Chocolate.png",
+                "ChocoCraze Hot Apple Cider": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Hot Apple Cider.png",
+                "ChocoCraze Butterscotch Latte": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Butterscotch Latte.png",
+                "ChocoCraze Nutella Hot Chocolate": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Nutella Hot Chocolate.png",
+                "ChocoCraze Spiced Chai Latte": "../Images/SubMenu Images/Hot Item Images/ChocoCraze Spiced Chai Latte.png",
+                "ChocoCraze Banana Split Shake": "../Images/SubMenu Images/Cold Item Images/ChocoCraze Banana Split Shake.png",
+                "Mint ChocoCraze Chip Gelato": "../Images/SubMenu Images/Cold Item Images/Mint ChocoCraze Chip Gelato.png",
+                "Double ChocoCraze Fudge Blizzard": "../Images/SubMenu Images/Cold Item Images/Double ChocoCraze Fudge Blizzard.png",
+                "Peanut Butter Cup ChocoCraze Milkshake": "../Images/SubMenu Images/Cold Item Images/Peanut Butter Cup ChocoCraze Milkshake.png",
+                "Triple ChocoCraze Sundae": "../Images/SubMenu Images/Cold Item Images/Triple ChocoCraze Sundae.png",
+                "ChocoCraze Caramel Swirl Frappe": "../Images/SubMenu Images/Cold Item Images/ChocoCraze Caramel Swirl Frappe.png",
+                "White Chocolate Raspberry ChocoCraze Gelato": "../Images/SubMenu Images/Cold Item Images/White Chocolate Raspberry ChocoCraze Gelato.png",
+                "ChocoCraze Cookie Dough Blizzard": "../Images/SubMenu Images/Cold Item Images/ChocoCraze Cookie Dough Blizzard.png",
+                "ChocoCraze Nutty Affogato": "../Images/SubMenu Images/Cold Item Images/ChocoCraze Nutty Affogato.png",
+                "Mocha Almond Fudge ChocoCraze Milkshake": "../Images/SubMenu Images/Cold Item Images/Mocha Almond Fudge ChocoCraze Milkshake.png",
+                "ChocoCraze S'mores Ice Cream Sandwich": "../Images/SubMenu Images/Cold Item Images/ChocoCraze S'mores Ice Cream Sandwich.png",
+                "ChocoCraze Mint Chocolate Chip Blizzard": "../Images/SubMenu Images/Cold Item Images/ChocoCraze Mint Chocolate Chip Blizzard.png",
+                "ChocoCraze Rocky Road Shake": "../Images/SubMenu Images/Cold Item Images/ChocoCraze Rocky Road Shake.png",
+                "Dark Chocolate Cherry ChocoCraze Gelato": "../Images/SubMenu Images/Cold Item Images/Dark Chocolate Cherry ChocoCraze Gelato.png",
+                "ChocoCraze Oreo Overload Parfait": "../Images/SubMenu Images/Cold Item Images/ChocoCraze Oreo Overload Parfait.png"
+            };
+
+            order.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('order-item');
+                itemDiv.innerHTML = `
+                    <img src="${productImages[item.name]}" alt="${item.name}">
+                    <p>${item.name} (x${item.quantity})</p>
+                    <p>$${(item.price * item.quantity).toFixed(2)}</p>
+                    <div class="order-buttons">
+                        <button class="remove-from-order" data-item-name="${item.name}">Remove</button>
+                    </div>`;
+                orderList.appendChild(itemDiv);
+                total += item.price * item.quantity;
+            });
+
+            basePriceElement.textContent = total.toFixed(2);
+
+            document.querySelectorAll('.remove-from-order').forEach(button => {
+                button.addEventListener('click', event => {
+                    const itemName = event.target.getAttribute('data-item-name');
+                    const itemIndex = order.findIndex(orderItem => orderItem.name === itemName);
+
+                    if (itemIndex !== -1) {
+                        if (order[itemIndex].quantity > 1) {
+                            order[itemIndex].quantity--;
+                        } else {
+                            order.splice(itemIndex, 1);
+                        }
+
+                        localStorage.setItem('order', JSON.stringify(order));
+                        window.location.reload();
+                    }
+                });
+            });
+
+            document.querySelector('.calculate-time').addEventListener('click', () => {
+                const addressFrom = document.getElementById('order-from').value;
+                const addressTo = document.getElementById('order-to').value;
+                if (!addressFrom || !addressTo) {
+                    alert('Please select both order from and delivery address.');
+                    return;
+                }
+
+                const deliveryTimes = {
+                    1: 15,
+                    2: 20,
+                    3: 25,
+                    4: 30,
+                    5: 35,
+                    6: 40,
+                    7: 45,
+                    8: 50,
+                    9: 55,
+                    10: 60
+                };
+
+                const deliveryTime = deliveryTimes[addressTo];
+                document.getElementById('delivery-time').textContent = `Estimated delivery time: ${deliveryTime} minutes.`;
+
+                // Calculate tax based on the selected address (assuming different tax rates for simplicity)
+                const taxRates = {
+                    1: 0.07,
+                    2: 0.08,
+                    3: 0.07,
+                    4: 0.06,
+                    5: 0.08,
+                    6: 0.07,
+                    7: 0.07,
+                    8: 0.06,
+                    9: 0.08,
+                    10: 0.07
+                };
+
+                const taxRate = taxRates[addressTo];
+                const taxAmount = total * taxRate;
+                const totalWithTax = total + taxAmount;
+
+                taxAmountElement.textContent = taxAmount.toFixed(2);
+                orderTotalElement.textContent = totalWithTax.toFixed(2);
+            });
+
+            const getSuggestions = (order) => {
+                // Suggest other items not in the current order
+                const allItems = Object.keys(productImages);
+                const suggestions = allItems.filter(item => !order.some(orderItem => orderItem.name === item));
+                return suggestions.slice(0, 5); // Return up to 5 suggestions
+            };
+
+            const suggestions = getSuggestions(order);
+
+            suggestions.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('suggestion-item');
+                itemDiv.innerHTML = `
+                    <img src="${productImages[item]}" alt="${item}">
+                    <p>${item}</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order" data-item-name="${item}" data-item-price="4.00">Add to Order</button>
+                    </div>`;
+                suggestionsList.appendChild(itemDiv);
+            });
+
+            document.querySelectorAll('.add-to-order').forEach(button => {
+                button.addEventListener('click', event => {
+                    const itemName = event.target.getAttribute('data-item-name');
+                    const itemPrice = event.target.getAttribute('data-item-price');
+                    const itemImage = productImages[itemName];
+
+                    const existingItem = order.find(orderItem => orderItem.name === itemName);
+
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        order.push({ name: itemName, price: itemPrice, image: itemImage, quantity: 1 });
+                    }
+
+                    localStorage.setItem('order', JSON.stringify(order));
+                    alert(`${itemName} has been added to your order.`);
+                    window.location.reload();
+                });
+            });
+
+            // Handle submenu return button
+            document.getElementById('submenu-selector').addEventListener('change', event => {
+                const selectedMenu = event.target.value;
+                window.location.href = selectedMenu;
+            });
+        });
+    </script>
+</body>
+</html>

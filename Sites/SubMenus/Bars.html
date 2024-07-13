@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Bars</title>
+    <style>
+        body {
+            background-color: #F7EED6;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-image: url('../../Images/HomePageImages/Choclate Factory.jpg');
+            background-size: cover;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: #F7EED6;
+            background-position: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        #LogoHead {
+            width: 200px;
+        }
+        #LogoLink {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .header-link {
+            text-decoration: none;
+            color: #F7EED6;
+            margin: 0 10px;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #7B3F00;
+            padding: 10px;
+            z-index: 1;
+            border-radius: 5px;
+        }
+        .submenu a {
+            color: #F7EED6;
+            display: block;
+            margin-top: 5px;
+            text-decoration: none;
+        }
+        .submenu a:hover {
+            text-decoration: underline;
+        }
+        .has-submenu:hover .submenu {
+            display: block;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #7B3F00;
+            padding: 10px;
+            border: 1px solid #7B3F00;
+            border-radius: 5px;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            border-radius: 5px;
+        }
+        .menu-item-details {
+            flex-grow: 1;
+        }
+        .menu-item-details h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .menu-item-details p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        .order-buttons {
+            display: flex;
+            flex-direction: column;
+        }
+        .order-buttons button {
+            margin-top: 5px;
+            padding: 5px;
+            background-color: #7B3F00;
+            color: #F7EED6;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .order-buttons button:hover {
+            background-color: #5e2e00;
+        }
+        #view-order {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #7B3F00;
+            color: #F7EED6;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        #view-order:hover {
+            background-color: #5e2e00;
+        }
+        @media only screen and (max-width: 1284px) {
+            header {
+                flex-wrap: wrap;
+                justify-content: center;
+                height: auto;
+            }
+            #LogoHead {
+                width: 40%;
+                margin-left: 50px;
+            }
+            .header-link {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="has-submenu">
+            <a href="#" class="header-link">Menu</a>
+            <div class="submenu">
+                <a href="Bars.html">Bars</a>
+                <a href="HotItems.html">Hot Items</a>
+                <a href="ColdItems.html">Cold Items</a>
+            </div>
+        </div>
+        <a href="../ChocHoliday.html" class="header-link">Chocolate Holidays</a>
+        <a id="Recipes" href="../Recipes.html" class="header-link">Recipes</a>
+        <a href="../../index.html" id="LogoLink">
+            <img id="LogoHead" src="../../Images/HomePageImages/Logo.png" alt="Logo">
+        </a>
+        <a href="../ChoclatePairs.html" class="header-link" id="ChoclatePairsLink">Chocolate Pairs</a>
+    </header>
+
+    <main>
+        <section id="chocolate-bars" class="menu-section">
+            <div class="menu-item" data-item-name="Almond Joy CocoaCraze Delight Bar" data-item-price="2.90" data-item-image="../../Images/SubMenu Images/Bar Images/Almond Joy CocoaCraze Delight Bar.png">
+                <img src="../../Images/SubMenu Images/Bar Images/Almond Joy CocoaCraze Delight Bar.png" alt="Almond Joy CocoaCraze Delight Bar">
+                <div class="menu-item-details">
+                    <h3>Almond Joy CocoaCraze Delight Bar</h3>
+                    <p>Experience the joy of almonds and coconut in this delightful chocolate bar. Smooth milk chocolate infused with shredded coconut and crunchy almond bits, creating a blissful combination of flavors and textures.</p>
+                    <p>Calories: 190</p>
+                    <p>$2.90</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order">Add to Order</button>
+                        <button class="remove-from-order">Remove from Order</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-item-name="Caramel Sea Salt CocoaCraze Sensation" data-item-price="2.80" data-item-image="../../Images/SubMenu Images/Bar Images/Carmel Sea Salt Sensation.png">
+                <img src="../../Images/SubMenu Images/Bar Images/Carmel Sea Salt Sensation.png" alt="Caramel Sea Salt CocoaCraze Sensation">
+                <div class="menu-item-details">
+                    <h3>Caramel Sea Salt CocoaCraze Sensation</h3>
+                    <p>Luxurious milk chocolate combined with gooey caramel and a touch of sea salt for a satisfying blend of sweet and savory.</p>
+                    <p>Calories: 200</p>
+                    <p>$2.80</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order">Add to Order</button>
+                        <button class="remove-from-order">Remove from Order</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-item-name="Cherry Almond CocoaCraze Delight Bar" data-item-price="2.70" data-item-image="../../Images/SubMenu Images/Bar Images/Cherry Almond CocoaCraze Delight Bar.png">
+                <img src="../../Images/SubMenu Images/Bar Images/Cherry Almond CocoaCraze Delight Bar.png" alt="Cherry Almond CocoaCraze Delight Bar">
+                <div class="menu-item-details">
+                    <h3>Cherry Almond CocoaCraze Delight Bar</h3>
+                    <p>Indulge in the delightful combination of cherries and almonds enveloped in rich milk chocolate. Each bite offers a burst of fruity sweetness with a nutty undertone.</p>
+                    <p>Calories: 180</p>
+                    <p>$2.70</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order">Add to Order</button>
+                        <button class="remove-from-order">Remove from Order</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-item-name="CocoaCraze Coconut Paradise Bar" data-item-price="3.10" data-item-image="../../Images/SubMenu Images/Bar Images/CocoaCraze Coconut Paradise Bar.png">
+                <img src="../../Images/SubMenu Images/Bar Images/CocoaCraze Coconut Paradise Bar.png" alt="CocoaCraze Coconut Paradise Bar">
+                <div class="menu-item-details">
+                    <h3>CocoaCraze Coconut Paradise Bar</h3>
+                    <p>Transport yourself to a tropical paradise with this coconut-infused chocolate bar. Silky milk chocolate combined with toasted coconut flakes, evoking the flavors of a sun-kissed island getaway.</p>
+                    <p>Calories: 200</p>
+                    <p>$3.10</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order">Add to Order</button>
+                        <button class="remove-from-order">Remove from Order</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-item-name="White CocoaCraze Dream" data-item-price="2.60" data-item-image="../../Images/SubMenu Images/Bar Images/White CocoaCraze Dream.png">
+                <img src="../../Images/SubMenu Images/Bar Images/White CocoaCraze Dream.png" alt="White CocoaCraze Dream">
+                <div class="menu-item-details">
+                    <h3>White CocoaCraze Dream</h3>
+                    <p>Smooth white chocolate with crunchy almond pieces, offering a creamy and nutty delight.</p>
+                    <p>Calories: 170</p>
+                    <p>$2.60</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order">Add to Order</button>
+                        <button class="remove-from-order">Remove from Order</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-item-name="CocoaCraze Espresso Crunch Bar" data-item-price="3.00" data-item-image="../../Images/SubMenu Images/Bar Images/CocoaCraze Espresso Crunch Bar.png">
+                <img src="../../Images/SubMenu Images/Bar Images/CocoaCraze Espresso Crunch Bar.png" alt="CocoaCraze Espresso Crunch Bar">
+                <div class="menu-item-details">
+                    <h3>CocoaCraze Espresso Crunch Bar</h3>
+                    <p>Energize your day with the bold flavors of espresso and chocolate. Rich dark chocolate combined with espresso-infused crunchy bits, delivering a satisfying crunch and a burst of coffee flavor.</p>
+                    <p>Calories: 190</p>
+                    <p>$3.00</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order">Add to Order</button>
+                        <button class="remove-from-order">Remove from Order</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-item-name="Hazelnut CocoaCraze Delight Bar" data-item-price="2.75" data-item-image="../../Images/SubMenu Images/Bar Images/Hazelnut CocoaCraze Delight Bar.png">
+                <img src="../../Images/SubMenu Images/Bar Images/Hazelnut CocoaCraze Delight Bar.png" alt="Hazelnut CocoaCraze Delight Bar">
+                <div class="menu-item-details">
+                    <h3>Hazelnut CocoaCraze Delight Bar</h3>
+                    <p>Creamy milk chocolate with a generous layer of hazelnut praline, offering a delightful balance of sweetness and nuttiness.</p>
+                    <p>Calories: 180</p>
+                    <p>$2.75</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order">Add to Order</button>
+                        <button class="remove-from-order">Remove from Order</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item" data-item-name="Orange Zest CocoaCraze Sensation" data-item-price="2.65" data-item-image="../../Images/SubMenu Images/Bar Images/Orange Zest CocoaCraze Sensation.png">
+                <img src="../../Images/SubMenu Images/Bar Images/Orange Zest CocoaCraze Sensation.png" alt="Orange Zest CocoaCraze Sensation">
+                <div class="menu-item-details">
+                    <h3>Orange Zest CocoaCraze Sensation</h3>
+                    <p>Delight in the refreshing taste of orange zest combined with smooth milk chocolate. Each bite offers a burst of citrusy goodness with a rich chocolatey finish.</p>
+                    <p>Calories: 170</p>
+                    <p>$2.65</p>
+                    <div class="order-buttons">
+                        <button class="add-to-order">Add to Order</button>
+                        <button class="remove-from-order">Remove from Order</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <button id="view-order">View Your Order</button>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const order = JSON.parse(localStorage.getItem('order')) || [];
+
+            document.querySelectorAll('.add-to-order').forEach(button => {
+                button.addEventListener('click', event => {
+                    const item = event.target.closest('.menu-item');
+                    const itemName = item.getAttribute('data-item-name');
+                    const itemPrice = item.getAttribute('data-item-price');
+                    const itemImage = item.getAttribute('data-item-image');
+                    
+                    const existingItem = order.find(orderItem => orderItem.name === itemName);
+
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        order.push({ name: itemName, price: itemPrice, image: itemImage, quantity: 1 });
+                    }
+
+                    localStorage.setItem('order', JSON.stringify(order));
+                    alert(`${itemName} has been added to your order.`);
+                });
+            });
+
+            document.querySelectorAll('.remove-from-order').forEach(button => {
+                button.addEventListener('click', event => {
+                    const item = event.target.closest('.menu-item');
+                    const itemName = item.getAttribute('data-item-name');
+
+                    const itemIndex = order.findIndex(orderItem => orderItem.name === itemName);
+
+                    if (itemIndex !== -1) {
+                        if (order[itemIndex].quantity > 1) {
+                            order[itemIndex].quantity--;
+                        } else {
+                            order.splice(itemIndex, 1);
+                        }
+
+                        localStorage.setItem('order', JSON.stringify(order));
+                        alert(`${itemName} has been removed from your order.`);
+                    } else {
+                        alert(`${itemName} is not in your order.`);
+                    }
+                });
+            });
+
+            document.getElementById('view-order').addEventListener('click', () => {
+                window.location.href = '../order.html';
+            });
+        });
+    </script>
+</body>
+</html>
